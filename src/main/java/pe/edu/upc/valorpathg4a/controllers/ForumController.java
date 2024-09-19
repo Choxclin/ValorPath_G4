@@ -36,7 +36,7 @@ public class ForumController {
     }
 
     @GetMapping("/listar")
-    @PreAuthorize("hasAnyAuthority('VETERANO')")
+    @PreAuthorize("hasAnyAuthority('PSICOLOGO')")
     public List<ForumDTO> listar() {
         return fS.list().stream().map(y -> {
             ModelMapper m = new ModelMapper();
