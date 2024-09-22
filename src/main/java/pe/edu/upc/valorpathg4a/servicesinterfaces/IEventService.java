@@ -12,4 +12,5 @@ public interface IEventService {
     public void delete(int id);
     public void update(Event e);
     public List<Event>buscar(String nombre);
+    public List<String[]> cantidadVeteranosporEvento();
 }

@@ -5,9 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.valorpathg4a.dtos.EventDTO;
+import pe.edu.upc.valorpathg4a.dtos.QuantityVeteraninEventDTO;
 import pe.edu.upc.valorpathg4a.entities.Event;
 import pe.edu.upc.valorpathg4a.servicesinterfaces.IEventService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -53,5 +55,18 @@ public class EventController {
             ModelMapper m = new ModelMapper();
             return m.map(x, EventDTO.class);
         }).collect(Collectors.toList());
+    }
+
+    @GetMapping("/quantityinEvent")
+    public List<QuantityVeteraninEventDTO> quantityVeteraninEvents(){
+        List<String[]> list = eS.cantidadVeteranosporEvento();
+        List<QuantityVeteraninEventDTO> listdto = new ArrayList<>();
+        for(String[] columna : list){
+            QuantityVeteraninEventDTO dto = new QuantityVeteraninEventDTO();
+            dto.setVeteranId(Integer.parseInt(columna[0]));
+            dto.setQuantityveter(Integer.parseInt(columna[1]));
+            listdto.add(dto);
+        }
+        return listdto;
     }
 }

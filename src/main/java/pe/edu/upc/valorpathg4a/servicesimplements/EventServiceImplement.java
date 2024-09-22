@@ -39,4 +39,9 @@ public class EventServiceImplement implements IEventService {
     public List<Event> buscar(String nombre) {
         return List.of();
     }
+
+    @Override
+    public List<String[]> cantidadVeteranosporEvento() {
+        return eR.quatityVeteransinEvent();
+    }
 }
