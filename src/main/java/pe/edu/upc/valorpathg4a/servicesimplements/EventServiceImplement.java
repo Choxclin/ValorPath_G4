@@ -34,4 +34,9 @@ public class EventServiceImplement implements IEventService {
     public void update(Event e) {
         eR.save(e);
     }
+
+    @Override
+    public List<Event> buscar(String nombre) {
+        return List.of();
+    }
 }
