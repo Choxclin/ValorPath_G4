@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.valorpathg4a.dtos.EventDTO;
+import pe.edu.upc.valorpathg4a.dtos.QuantityEventbyPsichologistDTO;
 import pe.edu.upc.valorpathg4a.dtos.QuantityVeteraninEventDTO;
 import pe.edu.upc.valorpathg4a.entities.Event;
 import pe.edu.upc.valorpathg4a.servicesinterfaces.IEventService;
@@ -65,6 +66,19 @@ public class EventController {
             QuantityVeteraninEventDTO dto = new QuantityVeteraninEventDTO();
             dto.setVeteranId(Integer.parseInt(columna[0]));
             dto.setQuantityveter(Integer.parseInt(columna[1]));
+            listdto.add(dto);
+        }
+        return listdto;
+    }
+
+    @GetMapping("/quantityEventbyPsico")
+    public List<QuantityEventbyPsichologistDTO> quantityEventbyPsico(){
+        List<String[]> list = eS.cantidadEventoporPsicologo();
+        List<QuantityEventbyPsichologistDTO> listdto = new ArrayList<>();
+        for(String[] columna : list){
+            QuantityEventbyPsichologistDTO dto = new QuantityEventbyPsichologistDTO();
+            dto.setPsicoId(Integer.parseInt(columna[0]));
+            dto.setQuantitypsico(Integer.parseInt(columna[1]));
             listdto.add(dto);
         }
         return listdto;

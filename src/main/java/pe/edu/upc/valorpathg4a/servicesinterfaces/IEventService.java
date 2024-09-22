@@ -13,4 +13,5 @@ public interface IEventService {
     public void update(Event e);
     public List<Event>buscar(String nombre);
     public List<String[]> cantidadVeteranosporEvento();
+    public List<String[]> cantidadEventoporPsicologo();
 }

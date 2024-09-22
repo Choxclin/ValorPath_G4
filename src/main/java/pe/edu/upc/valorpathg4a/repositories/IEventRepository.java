@@ -15,4 +15,12 @@ public interface IEventRepository extends JpaRepository<Event, Integer> {
             "ON u.id = e.veteran_id \n" +
             "GROUP BY desc",nativeQuery = true)
     public List<String[]> quatityVeteransinEvent();
+
+    @Query(value = "SELECT e.id AS eventId, COUNT(e.Id) as qpsicoevent \n"+
+            "From event e \n" +
+            "JOIN users u \n" +
+            "ON e.id = e.veteran_id \n" +
+            "GROUP BY desc",nativeQuery = true)
+    public List<String[]> quatityPsicoEvent();
+    public List<String[]> cantidadVeteranosporEvento();
 }
