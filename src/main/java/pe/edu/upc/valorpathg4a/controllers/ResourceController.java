@@ -2,6 +2,7 @@ package pe.edu.upc.valorpathg4a.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.valorpathg4a.dtos.LessUsedResourceDTO;
 import pe.edu.upc.valorpathg4a.dtos.MostUsebetweendateDTO;
@@ -22,6 +23,7 @@ public class ResourceController {
     private IResourceService rS;
 
     @GetMapping
+    @PreAuthorize("hasAnyAuthority('PSICOLOGO')")
     public List<Resource> listarecursos()
     {
         return rS.list().stream().map(x->{
@@ -31,6 +33,7 @@ public class ResourceController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyAuthority('PSICOLOGO')")
     public void insertar(@RequestBody ResourceDTO dto)
     {
         ModelMapper m=new ModelMapper();
@@ -39,6 +42,7 @@ public class ResourceController {
     }
 
     @GetMapping("/menosutilizado")
+    @PreAuthorize("hasAnyAuthority('PSICOLOGO')")
     public List<LessUsedResourceDTO> Recursomenosutilizado()
     {
         List<String[]> lista=rS.Rmenosutilizado();
@@ -53,6 +57,7 @@ public class ResourceController {
         return listdto;
     }
     @GetMapping("/maasutilizadoportiempo")
+    @PreAuthorize("hasAnyAuthority('PSICOLOGO')")
     public List<MostUsebetweendateDTO> recursomasutilizadoportiempo(@RequestParam LocalDate fechainicio, @RequestParam LocalDate fechafin) {
         List<String[]> lista = rS.tiporecursomasutilizad(fechainicio, fechafin);
         List<MostUsebetweendateDTO> listadto = new ArrayList<>();
