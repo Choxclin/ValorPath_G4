@@ -38,8 +38,8 @@ public class EventTypeServiceImplement implements IEventTypeService {
         eR.save(ety);
     }
 
-    @Override
-    public List<EventType> buscar(String etype) {
-        return eR.buscar(etype);
-    }
+   // @Override
+   // public List<EventType> buscar(String etype) {
+       // return eR.buscar(etype);
+   // }
 }

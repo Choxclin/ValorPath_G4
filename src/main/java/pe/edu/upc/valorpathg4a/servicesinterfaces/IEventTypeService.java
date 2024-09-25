@@ -15,6 +15,6 @@ public interface IEventTypeService {
 
     public void update(EventType ety);
 
-    public List<EventType> buscar(String etype);
+    //public List<EventType> buscar(String etype);
 
 }
