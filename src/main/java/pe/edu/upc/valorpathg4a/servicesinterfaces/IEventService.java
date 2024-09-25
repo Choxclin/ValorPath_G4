@@ -11,5 +11,7 @@ public interface IEventService {
     public void insert(Event e);
     public void delete(int id);
     public void update(Event e);
-
+    public List<Event>buscar(String nombre);
+    public List<String[]> cantidadVeteranosporEvento();
+    public List<String[]> cantidadEventoporPsicologo();
 }

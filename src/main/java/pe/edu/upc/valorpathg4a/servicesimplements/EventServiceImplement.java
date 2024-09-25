@@ -34,4 +34,29 @@ public class EventServiceImplement implements IEventService {
     public void update(Event e) {
         eR.save(e);
     }
+
+    @Override
+    public List<Event> buscar(String nombre) {
+        return List.of();
+    }
+
+    @Override
+    public List<String[]> cantidadVeteranosporEvento() {
+        return List.of();
+    }
+
+    @Override
+    public List<String[]> cantidadEventoporPsicologo() {
+        return List.of();
+    }
+
+    //@Override
+   // public List<String[]> cantidadVeteranosporEvento() {
+      //  return eR.quatityVeteransinEvent();
+   // }
+
+    //@Override
+    //public List<String[]> cantidadEventoporPsicologo() {
+        //return eR.quatityPsicoEvent();
+    //}
 }
