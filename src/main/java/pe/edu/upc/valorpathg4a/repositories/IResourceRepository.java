@@ -20,7 +20,7 @@ public interface IResourceRepository extends JpaRepository <Resource, Integer> {
     List<String[]> Rmenosutilizado();
 
     @Query(value = "SELECT r.resourcetype AS recurso, COUNT(ur.id_re) AS total_usos " +
-            "FROM recursos r " +
+            "FROM recursos r " +    
             "JOIN usorecursos ur ON r.id = ur.id_re " +
             "WHERE ur.fecha BETWEEN :fechaInicio AND :fechaFin " +
             "GROUP BY r.id " +
