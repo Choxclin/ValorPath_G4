@@ -21,7 +21,7 @@ public interface IResourceRepository extends JpaRepository <Resource, Integer> {
 
     @Query(value = "SELECT r.resourcetype AS recurso, COUNT(ur.id_re) AS total_usos " +
             "FROM recursos r " +
-            "JOIN uso_recursos ur ON r.id = ur.id_re " +
+            "JOIN usorecursos ur ON r.id = ur.id_re " +
             "WHERE ur.fecha BETWEEN :fechaInicio AND :fechaFin " +
             "GROUP BY r.id " +
             "ORDER BY total_usos DESC ", nativeQuery = true)
