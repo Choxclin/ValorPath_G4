@@ -11,11 +11,11 @@ import java.util.List;
 
 @Repository
 public interface IResourceRepository extends JpaRepository <Resource, Integer> {
-    @Query(value = "SELECT r.resourcetype AS recurso,COUNT(ur.id) AS total_usos\n" +
+    @Query(value = "SELECT r.resourcetype AS recurso,COUNT(ur.id_re) AS total_usos\n" +
             "FROM recursos r\n" +
-            "LEFT JOIN uso_recursos ur ON r.id = ur.id\n" +
+            "LEFT JOIN usorecursos ur ON r.id = ur.id_re\n" +
             "GROUP BY r.id\n" +
-            "HAVING total_usos = 0 OR total_usos IS NULL\n" +
+            "Having COUNT(ur.id_re) = 1\n" +
             "ORDER BY total_usos ASC",nativeQuery = true)
     List<String[]> Rmenosutilizado();
 
