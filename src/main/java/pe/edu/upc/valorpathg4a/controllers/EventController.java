@@ -58,29 +58,29 @@ public class EventController {
         }).collect(Collectors.toList());
     }
 
-    @GetMapping("/quantityinEvent")
-    public List<QuantityVeteraninEventDTO> quantityVeteraninEvents(){
-        List<String[]> list = eS.cantidadVeteranosporEvento();
-        List<QuantityVeteraninEventDTO> listdto = new ArrayList<>();
-        for(String[] columna : list){
-            QuantityVeteraninEventDTO dto = new QuantityVeteraninEventDTO();
-            dto.setVeteranId(Integer.parseInt(columna[0]));
-            dto.setQuantityveter(Integer.parseInt(columna[1]));
-            listdto.add(dto);
-        }
-        return listdto;
-    }
+    //@GetMapping("/quantityinEvent")
+  //  public List<QuantityVeteraninEventDTO> quantityVeteraninEvents(){
+       // List<String[]> list = eS.cantidadVeteranosporEvento();
+       // List<QuantityVeteraninEventDTO> listdto = new ArrayList<>();
+       // for(String[] columna : list){
+          //  QuantityVeteraninEventDTO dto = new QuantityVeteraninEventDTO();
+          //  dto.setVeteranId(Integer.parseInt(columna[0]));
+          //  dto.setQuantityveter(Integer.parseInt(columna[1]));
+          //  listdto.add(dto);
+      //  }
+      //  return listdto;
+ //   }
 
-    @GetMapping("/quantityEventbyPsico")
-    public List<QuantityEventbyPsichologistDTO> quantityEventbyPsico(){
-        List<String[]> list = eS.cantidadEventoporPsicologo();
-        List<QuantityEventbyPsichologistDTO> listdto = new ArrayList<>();
-        for(String[] columna : list){
-            QuantityEventbyPsichologistDTO dto = new QuantityEventbyPsichologistDTO();
-            dto.setPsicoId(Integer.parseInt(columna[0]));
-            dto.setQuantitypsico(Integer.parseInt(columna[1]));
-            listdto.add(dto);
-        }
-        return listdto;
-    }
+    //@GetMapping("/quantityEventbyPsico")
+   // public List<QuantityEventbyPsichologistDTO> quantityEventbyPsico(){
+      //  List<String[]> list = eS.cantidadEventoporPsicologo();
+        //List<QuantityEventbyPsichologistDTO> listdto = new ArrayList<>();
+        //for(String[] columna : list){
+        //    QuantityEventbyPsichologistDTO dto = new QuantityEventbyPsichologistDTO();
+        //    dto.setPsicoId(Integer.parseInt(columna[0]));
+        //    dto.setQuantitypsico(Integer.parseInt(columna[1]));
+       //     listdto.add(dto);
+    //    }
+    //    return listdto;
+  //  }
 }

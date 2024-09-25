@@ -40,15 +40,6 @@ public class EventServiceImplement implements IEventService {
         return List.of();
     }
 
-    @Override
-    public List<String[]> cantidadVeteranosporEvento() {
-        return List.of();
-    }
-
-    @Override
-    public List<String[]> cantidadEventoporPsicologo() {
-        return List.of();
-    }
 
     //@Override
    // public List<String[]> cantidadVeteranosporEvento() {
