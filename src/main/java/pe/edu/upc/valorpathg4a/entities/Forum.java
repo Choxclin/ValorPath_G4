@@ -4,39 +4,44 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "forums")
+@Entity //mapeo ORL
+@Table(name = "Forum")
 public class Forum {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @Column(name = "title",length = 100,nullable = false)
+    private Integer id;
+
+    @Column(name = "title", length = 50, nullable = false)
     private String title;
-    @Column(name = "date",nullable = false)
-    private LocalDate date;
-    @Column(name = "description",length = 100,nullable = false)
+
+    @Column(name = "description", length = 100, nullable = false)
     private String description;
+
+    @Column(name = "date", nullable = false)
+    private LocalDate date;
+
+    // Relación con la taba Users [psiciologo]
     @ManyToOne
-    @JoinColumn(name = "psychologistId")
+    @JoinColumn(name = "psychologistid")
     private Users psychologist;
-    //constructor
+
 
     public Forum() {
     }
 
-    public Forum(int id, String title, LocalDate date, String description, Users psychologist) {
+    public Forum(Integer id, String description, String title, LocalDate date, Users psychologist) {
         this.id = id;
+        this.description = description;
         this.title = title;
         this.date = date;
-        this.description = description;
         this.psychologist = psychologist;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -72,10 +77,3 @@ public class Forum {
         this.psychologist = psychologist;
     }
 }
-//Forum
-//
-//id
-//title
-//description
-//date
-//pyschologist_id

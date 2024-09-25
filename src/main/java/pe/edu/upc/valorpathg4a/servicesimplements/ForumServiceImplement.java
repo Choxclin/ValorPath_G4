@@ -45,11 +45,15 @@ public class ForumServiceImplement implements IForumService {
 
     @Override
     public List<String[]> ForosMasActivosEnElEltimoMes() {
-        return fR.mostActiveForumsInTheLastMonth();
+        return fR.MostActiveForumsInTheLastMonth();
     }
 
     @Override
     public List<String[]> CantidadDeForosQueTieneUnPsicologo() {
-        return fR.quantityForumsByPsichologyst();
+        return fR.QuantityForumsByPsychologist();
     }
+
+
+
 }
+

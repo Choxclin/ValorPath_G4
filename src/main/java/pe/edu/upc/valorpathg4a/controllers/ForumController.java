@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.valorpathg4a.dtos.ForumDTO;
-import pe.edu.upc.valorpathg4a.dtos.MostActiveForumInTheLastMonthDTO;
+import pe.edu.upc.valorpathg4a.dtos.MostActiveForumInatMonthDTO;
 import pe.edu.upc.valorpathg4a.dtos.QuantityForumByPsychologistDTO;
 import pe.edu.upc.valorpathg4a.entities.Forum;
 import pe.edu.upc.valorpathg4a.servicesinterfaces.IForumService;
@@ -14,7 +14,6 @@ import pe.edu.upc.valorpathg4a.servicesinterfaces.IForumService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
 @RestController
 @RequestMapping("/foros")
 public class ForumController {
@@ -56,13 +55,13 @@ public class ForumController {
         return forumDTO;
     }
     @GetMapping("/quantity(MostActiveForums)")
-    public List<MostActiveForumInTheLastMonthDTO> mostActiveForumsInTheLastMonths(){
+    public List<MostActiveForumInatMonthDTO> mostActiveForumsInTheLastMonths(){
         List<String[]> list = fS.ForosMasActivosEnElEltimoMes();
-        List<MostActiveForumInTheLastMonthDTO> listdto = new ArrayList<>();
+        List<MostActiveForumInatMonthDTO> listdto = new ArrayList<>();
         for(String[] columna : list){
-            MostActiveForumInTheLastMonthDTO dto = new MostActiveForumInTheLastMonthDTO();
-            dto.setId(Integer.parseInt(columna[0]));
-            dto.setTitle(columna[1]);
+            MostActiveForumInatMonthDTO dto = new MostActiveForumInatMonthDTO();
+            dto.setForumId(Integer.parseInt(columna[0]));
+            dto.setForumTitle(columna[1]);
             dto.setNumPosts(Integer.parseInt(columna[2]));
             listdto.add(dto);
         }
@@ -74,8 +73,8 @@ public class ForumController {
         List<QuantityForumByPsychologistDTO> listdto = new ArrayList<>();
         for(String[] columna : list){
             QuantityForumByPsychologistDTO dto = new QuantityForumByPsychologistDTO();
-            dto.setUsername(columna[0]);
-            dto.setPsychologistLastName(columna[1]);
+            dto.setPsychologistname(columna[0]);
+            dto.setPsychologistlastName(columna[1]);
             dto.setForumCount(Integer.parseInt(columna[2]));
             listdto.add(dto);
         }

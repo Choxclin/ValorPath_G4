@@ -1,5 +1,6 @@
 package pe.edu.upc.valorpathg4a.dtos;
 
+import pe.edu.upc.valorpathg4a.entities.Forum;
 import pe.edu.upc.valorpathg4a.entities.Users;
 
 import java.time.LocalDate;
@@ -10,6 +11,7 @@ public class PostDTO {
     private String comment;
     private LocalDate date;
     private Users veteran;
+    private Forum forum;
 
     public int getId() {
         return id;
@@ -49,5 +51,13 @@ public class PostDTO {
 
     public void setVeteran(Users veteran) {
         this.veteran = veteran;
+    }
+
+    public Forum getForum() {
+        return forum;
+    }
+
+    public void setForum(Forum forum) {
+        this.forum = forum;
     }
 }

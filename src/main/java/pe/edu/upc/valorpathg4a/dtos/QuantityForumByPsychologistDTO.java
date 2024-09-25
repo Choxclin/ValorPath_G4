@@ -1,24 +1,24 @@
 package pe.edu.upc.valorpathg4a.dtos;
 
 public class QuantityForumByPsychologistDTO {
-    private String username;
-    private String psychologistLastName;
+    private String psychologistname;
+    private String psychologistlastName;
     private int forumCount;
 
-    public String getUsername() {
-        return username;
+    public String getPsychologistname() {
+        return psychologistname;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setPsychologistname(String psychologistname) {
+        this.psychologistname = psychologistname;
     }
 
-    public String getPsychologistLastName() {
-        return psychologistLastName;
+    public String getPsychologistlastName() {
+        return psychologistlastName;
     }
 
-    public void setPsychologistLastName(String psychologistLastName) {
-        this.psychologistLastName = psychologistLastName;
+    public void setPsychologistlastName(String psychologistlastName) {
+        this.psychologistlastName = psychologistlastName;
     }
 
     public int getForumCount() {

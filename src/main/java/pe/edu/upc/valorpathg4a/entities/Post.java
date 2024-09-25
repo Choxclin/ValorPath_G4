@@ -3,6 +3,7 @@ package pe.edu.upc.valorpathg4a.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+
 @Entity
 @Table(name = "posts")
 public class Post {
@@ -18,16 +19,21 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "veteranId")
     private Users veteran;
+    // Relación muchos a uno con Forum
+    @ManyToOne
+    @JoinColumn(name = "idForum")
+    private Forum forum;
 
     public Post() {
     }
 
-    public Post(int id, String title, String comment, LocalDate date, Users veteran) {
+    public Post(int id, String title, String comment, LocalDate date, Users veteran, Forum forum) {
         this.id = id;
         this.title = title;
         this.comment = comment;
         this.date = date;
         this.veteran = veteran;
+        this.forum = forum;
     }
 
     public int getId() {
@@ -38,20 +44,20 @@ public class Post {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getComment() {
         return comment;
     }
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public LocalDate getDate() {
@@ -68,6 +74,14 @@ public class Post {
 
     public void setVeteran(Users veteran) {
         this.veteran = veteran;
+    }
+
+    public Forum getForum() {
+        return forum;
+    }
+
+    public void setForum(Forum forum) {
+        this.forum = forum;
     }
 }
 //Post
