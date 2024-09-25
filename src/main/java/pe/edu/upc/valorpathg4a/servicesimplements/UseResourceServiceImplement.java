@@ -16,4 +16,9 @@ public class UseResourceServiceImplement implements IUseResourcesService {
     public List<UseResources> listaruso() {
         return iur.findAll();
     }
+
+    @Override
+    public void insert(UseResources useResources) {
+        iur.save(useResources);
+    }
 }

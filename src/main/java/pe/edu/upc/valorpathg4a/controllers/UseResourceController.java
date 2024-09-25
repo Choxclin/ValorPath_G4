@@ -3,10 +3,9 @@ package pe.edu.upc.valorpathg4a.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.valorpathg4a.dtos.UseResourcesDTO;
+import pe.edu.upc.valorpathg4a.entities.UseResources;
 import pe.edu.upc.valorpathg4a.servicesinterfaces.IUseResourcesService;
 
 import java.util.List;
@@ -19,7 +18,6 @@ public class UseResourceController {
     private IUseResourcesService iurs;
 
     @GetMapping
-    @PreAuthorize("hasAnyAuthority('PSICOLOGO')")
     public List<UseResourcesDTO> listarusos()
     {
         return iurs.listaruso().stream().map(x->
@@ -27,5 +25,13 @@ public class UseResourceController {
             ModelMapper m= new ModelMapper();
             return m.map(x, UseResourcesDTO.class);
         }).collect(Collectors.toList());
+    }
+
+    @PostMapping
+    public void registrar(@RequestBody UseResourcesDTO dto)
+    {
+        ModelMapper m= new ModelMapper();
+        UseResources res =m.map(dto, UseResources.class);
+        iurs.insert(res);
     }
 }
